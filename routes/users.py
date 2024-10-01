@@ -23,11 +23,6 @@ async def sign_new_user(data: User) -> dict:
 
 @user_router.post("/signin")
 async def sign_user_in(user: UserSignIn) -> dict:
-    if users == {}:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Сначала необходимо создать пользователя"
-        )
     if user.email not in users:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
